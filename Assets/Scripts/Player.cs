@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+        FindObjectOfType<AudioManager>().Play("death");
+
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour
 
     public void Grow()
     {
+        FindObjectOfType<AudioManager>().Play("power up");
+
         smallRenderer.enabled = false;
         bigRenderer.enabled = true;
         activeRenderer = bigRenderer;
@@ -91,6 +95,7 @@ public class Player : MonoBehaviour
 
     public void Starpower()
     {
+        FindObjectOfType<AudioManager>().Play("power up");
         StartCoroutine(StarpowerAnimation());
     }
 

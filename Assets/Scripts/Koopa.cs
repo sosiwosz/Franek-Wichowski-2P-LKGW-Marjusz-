@@ -32,12 +32,18 @@ public class Koopa : MonoBehaviour
             {
                 Vector2 direction = new Vector2(transform.position.x - other.transform.position.x, 0f);
                 PushShell(direction);
+
+                FindObjectOfType<AudioManager>().Play("death");
+
             }
             else
             {
                 Player player = other.GetComponent<Player>();
 
                 if (player.starpower) {
+
+                    FindObjectOfType<AudioManager>().Play("death");
+
                     Hit();
                 } else {
                     player.Hit();
@@ -47,6 +53,7 @@ public class Koopa : MonoBehaviour
         else if (!shelled && other.gameObject.layer == LayerMask.NameToLayer("Shell"))
         {
             Hit();
+            FindObjectOfType<AudioManager>().Play("death");
         }
     }
 
@@ -75,6 +82,8 @@ public class Koopa : MonoBehaviour
 
     private void Hit()
     {
+        FindObjectOfType<AudioManager>().Play("death");
+
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);
@@ -83,6 +92,8 @@ public class Koopa : MonoBehaviour
     private void OnBecameInvisible()
     {
         if (pushed) {
+            FindObjectOfType<AudioManager>().Play("death");
+
             Destroy(gameObject);
         }
     }
