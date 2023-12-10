@@ -105,6 +105,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "coin") 
+        {
+ 
+        }
+    }
+
     private void ApplyGravity()
     {
         // check if falling

@@ -5,8 +5,7 @@ public class BlockCoin : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.Instance.AddCoin();
-
+        ScoreManager.scoreCount += 1;
         StartCoroutine(Animate());
     }
 

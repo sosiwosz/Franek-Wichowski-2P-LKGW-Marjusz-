@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,12 +6,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private ScoreManager scoreManager;
+
     public static GameManager Instance { get; private set; }
 
     public int world { get; private set; }
     public int stage { get; private set; }
     public int lives { get; private set; }
-    public int coins { get; private set; }
+    public int scoreCount { get; private set; }
 
     private void Awake()
     {
@@ -31,22 +34,23 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ScoreManager.scoreCount = 0;
         Application.targetFrameRate = 60;
+        scoreManager = FindObjectOfType<ScoreManager>();
 
         NewGame();
     }
 
     public void NewGame()
     {
-        lives = 3;
-        coins = 0;
+        lives = 1;
 
         LoadLevel(1, 1);
+        ScoreManager.scoreCount = 0;
     }
 
     public void GameOver()
     {
-        // TODO: show game over screen
 
         NewGame();
     }
@@ -82,11 +86,11 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin()
     {
-        Score.coinsValue += 1;
+        scoreCount += 1;
 
-        if (coins == 100)
+        if (scoreCount == 100)
         {
-            coins = 0;
+            scoreCount = 0;
             AddLife();
         }
     }

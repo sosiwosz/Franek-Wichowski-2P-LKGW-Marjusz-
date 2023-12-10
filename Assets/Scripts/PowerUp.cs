@@ -8,6 +8,7 @@ public class PowerUp : MonoBehaviour
         ExtraLife,
         MagicMushroom,
         Starpower,
+        FireMushroom,
     }
 
     public Type type;
@@ -25,7 +26,6 @@ public class PowerUp : MonoBehaviour
         {
             case Type.Coin:
                 GameManager.Instance.AddCoin();
-                Score.coinsValue += 1;
                 break;
 
             case Type.ExtraLife:
@@ -38,6 +38,10 @@ public class PowerUp : MonoBehaviour
 
             case Type.Starpower:
                 player.GetComponent<Player>().Starpower();
+                break;
+
+            case Type.FireMushroom:
+                player.GetComponent<Player>().Hit();
                 break;
         }
 
