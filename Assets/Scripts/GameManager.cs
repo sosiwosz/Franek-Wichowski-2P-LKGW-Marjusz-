@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin()
     {
-        coins++;
+        Score.coinsValue += 1;
 
         if (coins == 100)
         {

@@ -25,6 +25,7 @@ public class PowerUp : MonoBehaviour
         {
             case Type.Coin:
                 GameManager.Instance.AddCoin();
+                Score.coinsValue += 1;
                 break;
 
             case Type.ExtraLife:
