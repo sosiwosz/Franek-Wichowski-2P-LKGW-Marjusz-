@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        LoadLevel(world, stage + 1);
+        SceneManager.LoadSceneAsync(2); ;
     }
 
     public void ResetLevel(float delay)

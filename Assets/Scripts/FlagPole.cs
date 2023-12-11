@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FlagPole : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class FlagPole : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        GameManager.Instance.LoadLevel(nextWorld, nextStage);
+        SceneManager.LoadSceneAsync(2); ;
     }
 
     private IEnumerator MoveTo(Transform subject, Vector3 position)
